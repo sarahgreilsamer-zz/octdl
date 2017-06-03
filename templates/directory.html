@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Directory</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    {% for student in students %}
+    <p><a href="/directory/{{ student.username }}">{{ student.first_name }} {{ student.last_name }}</a></p>
+    {% endfor %}
+</body>
+</html>

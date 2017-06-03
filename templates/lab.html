@@ -1,0 +1,96 @@
+<style>
+    img {max-width:100%;}
+</style>
+
+<h2>2016-04-07 Lab</h2>
+<p>You will be writing a small web app today, which is a miniature version of your final project. Everyone should go through the setup steps, although you may work in pairs when writing code.</p>
+<h3>Setup</h3>
+<ol>
+<li>
+<p>If you have yet to install <code>git</code>, <a href="https://git-scm.com/downloads">download and install it</a>.</p>
+</li>
+<li>
+<p>In PyCharm, open the Preferences/Settings window, then go to Project &gt; Project Interpreter. You should see a screen that looks like this:</p>
+<p><img alt="The Project Interpreter Screen" src="interpreter.png" /></p>
+<p>On the bottom, click on the plus (+) sign, then search for Flask. The description should read "A microframework based on Werkzeug, Jinja2 and good intentions." Click "Install Package"; once it says "Package 'Flask' installed successfully", close both windows.</p>
+</li>
+<li>
+<p>I have created a Github repository of starter code; however, you will not be able to clone it directly. Go to <a href="https://github.com/justinnhli/flask-lab">https://github.com/justinnhli/flask-lab</a>. On the top right, click on "Fork". In computer science jargon, "forking" a project means copying a project then making your own additions.</p>
+<p>Once Github has finished loading, copy the URL. It should look like <code>https://github.com/XXXXXXX/flask-lab</code>, where <code>XXXXXXX</code> is your Github username.</p>
+</li>
+<li>
+<p>Go to <a href="https://www.heroku.com/">Heroku</a> and create an account.</p>
+<p>Once you've logged in, go to "Manage Account":</p>
+<p><img alt="Manage your Heroku account" src="heroku-account.png" /></p>
+<p>Under "Applications", there should be a link to connect your Heroku account to your Github account. Click on it, and follow the instructions.</p>
+</li>
+<li>
+<p>Go back to the Heroku dashboard. On the top right, click on the plus (+) sign, then "Create new app". Leave both fields blank and click "Create App".</p>
+<p><img alt="Create a new Heroku app" src="heroku-app.png" /></p>
+<p>In the middle of the screen, click on "Connect to Github", then type in the name of the repository that you forked. If you've followed every step so far, it should be "flask-lab". Click "Search", then "Connect".</p>
+<p><img alt="Connect Heroku to Github" src="heroku-github.png" /></p>
+<p>In the new screen, scroll down and click "Enable Automatic Deploys"</p>
+<p><img alt="Connect Heroku to Github" src="heroku-deploy.png" /></p>
+<p>Then finally, even further down, click "Manual Deploy" to get the ball rolling.</p>
+</li>
+<li>
+<p>Click on the top right dropdown menu, then click "Open App".</p>
+<p><img alt="Open your Heroku app" src="heroku-open.png" /></p>
+<p>If you have done everything right, you should now be looking at a page that says "Hello World!".</p>
+</li>
+</ol>
+<p><strong>Congratulations!</strong> You just launched your first app.</p>
+<h3>Flask</h3>
+<p>What we just set up is a web app that is connected to your Github account. Every time you push code to Github, Heroku will automatically rebuild and update your app after a couple minutes. This means you can work entirely within PyCharm without having to go through Github or Heroku.</p>
+<p>Now let's take a look at what's going on behind the scenes. In PyCharm, check out the project from your Github page. The URL should look like <code>https://github.com/XXXXXXX/flask-lab</code>, where <code>XXXXXXX</code> is your Github username. Refer to the slides from Monday (4/11) for instructions on how to do this.</p>
+<p>Once in PyCharm, you'll notice that the repository contains a number of files. Several you can ignore completely (<code>.gitignore</code>, <code>Procfile</code>, <code>requirements.txt</code>, and <code>runtime.txt</code>); others we will get to soon. For now, right click on <code>flask-app.py</code>, and click "Run". PyCharm should print out something like:</p>
+<pre><code> * Running on [http://127.0.0.1:5000/](http://127.0.0.1:5000/) (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 289-277-425
+</code></pre>
+<p>Click on the URL; that should open a browser window with the same "Hello World!" page you saw before. Your app is now running on your own computer - this way you can test your code before committing and pushing it to Github.</p>
+<p>Now let's open <code>flask-app.py</code> and take a look inside. The first function in that file is <code>view_hello</code>:</p>
+<pre><code>@app.route('/')
+def view_hello():
+    return 'Hello World!'
+</code></pre>
+<p>There's something new here though: the <code>@app.route('/')</code>. This tells Python to call <code>view_hello</code> if someone is looking at the URL <code>/</code> - that is, <code>http://127.0.0.1:5000/</code>, except we leave up everything up till the first <code>/</code>. In this case, the function just returns <code>Hello World!</code>, which is what your browser displays.</p>
+<p>(Aside: the <code>@</code> syntax is technically called a <em>function decorator</em>. You don't need to understand it for this class, but if you're curious, it's actually a function that takes a function and returns a different function. Crazy huh?)</p>
+<p>Let's look at the next function, <code>view_demo_1</code>. Looking at the function decorator, can you guess the URL for this function? If you guessed <a href="http://127.0.0.1:5000/demo-1"><code>http://127.0.0.1:5000/demo-1</code></a>, you guessed correctly. Open the URL in your browser; you should simply see "Hello Justin!".</p>
+<p>What is going on? Let's start with the function itself:</p>
+<pre><code>@app.route('/demo-1')
+def view_demo_1():
+    return render_template('demo-1.html', name='Justin')
+</code></pre>
+<p>This function doesn't do much either, except call <code>render_template</code>, which is a function we imported from Flask. The first argument to this function is a filename - you can find <code>demo-1.html</code> in the <code>templates</code> folder. Open it in PyCharm. Most of this should look familiar, except for this line in the middle:</p>
+<pre><code>Hi {{ name }}!
+</code></pre>
+<p>What is actually happening is that the second argument to <code>render_template</code>, <code>name='Justin'</code> is used to <em>replace</em> the <code>{{ name }}</code> in the HTML file. You can replace <code>'Justin'</code> with any other string, and the page will display whatever string you used.</p>
+<p>Make sure you understand what is going on before continuing.</p>
+<p>Flask also lets you take parts of the URL and use it inside the function. Take a look at <code>view_demo_2</code>: it takes <code>name</code> as an argument, and conveniently, the URL used also has <code>&lt;name&gt;</code> in it. The way to understand this is that whatever comes after <code>demo-2</code> in the URL, that will become the argument to <code>view_demo_2</code>. So, for example, go to <a href="http://127.0.0.1:5000/demo-2/Taylor"><code>http://127.0.0.1:5000/demo-2/Taylor</code></a>. The page should say "Hi Taylor", only because <code>Taylor</code> is in the URL. In <code>view_demo_2</code>, you can see that <code>render_template</code> is called with <code>name=name</code> - the first <code>name</code> corresponds to the <code>{{ name }}</code> in <code>demo-1.html</code>, while the second <code>name</code> is the variable in the function. Play around with other URLs, and try renaming the variables.</p>
+<p>Again, make sure you understand what is going on before continuing.</p>
+<p>Finally, you can do more complicated things in the HTML. In <code>view_demo_3</code>, we call <code>render_template</code> with an additional variable, as well as with a list instead of a string. Take a look at <code>demo-3.html</code> in the <code>templates</code> folder. In addition to having variables, you can also use branches, loops, and so on. The syntax is roughly the same as the Python syntax, and as long as you don't do anything too complex you should be okay. This HTML-like syntax is actually part of the Jinja library; feel free to look through <a href="http://jinja.pocoo.org/docs/dev/templates/#list-of-control-structures">their documentation</a> to see what else you can do.</p>
+<p>All of this is already on Github, and so should work on your Heroku site. I encourage you to try changing these demo functions, then committing and pushing your code and seeing it work online.</p>
+<p>We've covered most of the basics of Flask, so let's move on to the coding.</p>
+<h3>Student Directory App</h3>
+<p>The core of this lab is writing a simple student directory app. A lot of the infrastructure has already been written for you, including the HTML files and a <code>get_data</code> function, which reads the <code>students.csv</code> file and returns a list of Student instances. You just need to write two functions:</p>
+<ul>
+<li>
+<p><code>view_directory</code> is associated with the URL <code>/directory</code>. This function uses <code>directory.html</code>, which takes a list of Student instances and displays them in a list.</p>
+</li>
+<li>
+<p><code>view_student</code> is associated with the URL <code>/directory/&lt;username&gt;</code>, where <code>username</code> is the Oxy username of the student. This function uses <code>student.html</code>, and you will need to call <code>render_template</code> with three arguments:</p>
+<ul>
+<li><code>student</code> is the instance of Student that you are displaying</li>
+<li><code>prev_student</code> is the previous student in the directory</li>
+<li><code>next_student</code> is the next student in the directory</li>
+</ul>
+</li>
+</ul>
+<p>You should take a look at <code>directory.html</code> and <code>student.html</code> to see how these variables are used.</p>
+<p>In addition to these two functions, you will also need to some CSS rules in <code>styles.css</code> in the <code>css</code> folder.</p>
+<p>Once you have completed all the two functions and added some style to the pages, commit and push your changes.</p>
+<h3>Submission</h3>
+<p>One student in each group needs to send me an email with the URL of their Heroku app (<code>XXXX.herokuapp.com</code>). <strong>Your work will not be graded unless it is online.</strong></p>
+<p>Please also fill out the <a href="https://docs.google.com/a/oxy.edu/forms/d/1QT9Fe-S9BODas6mOAQIMtmkA9vA5OypBbg_6b1voCGk/viewform">peer evaluation</a> when you are done.</p>
