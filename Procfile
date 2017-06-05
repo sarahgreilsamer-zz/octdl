@@ -1,1 +1,1 @@
-web: gunicorn flask-app:app --log-file=-
+web: gunicorn ocdtl:app --log-file=-
