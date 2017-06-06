@@ -8,21 +8,35 @@ app = Flask(__name__)
 # DEMO STUFF
 
 @app.route('/')
-def view_hello():
-    return 'Hello World!'
+def view_homepage():
+    return render_template('home-page.html')
 
-@app.route('/demo-1')
+''''@app.route('/stories')
 def view_demo_1():
     return render_template('demo-1.html', name='Justin')
 
-@app.route('/demo-2/<name>')
+@app.route('/videos')
 def view_demo_2(name):
     return render_template('demo-1.html', name=name)
 
-@app.route('/demo-3')
+@app.route('/gallery')
 def view_demo_3():
     names = ['Alice', 'Bob', 'Charlie']
     return render_template('demo-3.html', salutation='Roll call', names=names)
+
+@app.route('/stories/<name>')
+def view_demo_1():
+    return render_template('demo-1.html', name='Justin')
+
+@app.route('/videos/<name>')
+def view_demo_2(name):
+    return render_template('demo-1.html', name=name)
+
+@app.route('/gallery/<name>')
+def view_demo_3():
+    names = ['Alice', 'Bob', 'Charlie']
+    return render_template('demo-3.html', salutation='Roll call', names=names)'''
+
 
 # STUDENT DIRECTORY APP
 
