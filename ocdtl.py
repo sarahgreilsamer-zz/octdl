@@ -5,26 +5,33 @@ from flask import Flask, render_template, send_from_directory
 
 app = Flask(__name__)
 
-# DEMO STUFF
-
 @app.route('/')
 def view_homepage():
     return render_template('home-page.html')
 
-''''@app.route('/stories')
-def view_demo_1():
-    return render_template('demo-1.html', name='Justin')
+@app.route('/stories-library')
+def view_storieslibrary():
+    names = ["Sense 3", "How To Get Away With Eating Nutella", "Big Bang Geography", "Nashville Town"]
+    authors = ["Sarah Greilsamer", "Adam Roy", "Justin Li", "Jonathan Veitch"]
+    dates = ["1923", "2458", "1983", "2017"]
+    origins = ["Zimbabwe", "U.S.A.", "Germany", "Australia"]
+    types = ["fable", "fable", "poem", "play"]
+    themes = ["Love, War", "Friendship", "Racism", "Learning"]
+    return render_template('stories-library.html', name=names, author=authors, date=dates, origin=origins, type=types, theme=themes)
 
-@app.route('/videos')
-def view_demo_2(name):
-    return render_template('demo-1.html', name=name)
+@app.route('/training-videos')
+def view_trainingvideos():
+    return render_template('training-videos.html')
 
-@app.route('/gallery')
-def view_demo_3():
-    names = ['Alice', 'Bob', 'Charlie']
-    return render_template('demo-3.html', salutation='Roll call', names=names)
+@app.route('/photo-gallery')
+def view_photogallery():
+    return render_template('photo-gallery.html')
 
-@app.route('/stories/<name>')
+@app.route('/faqs')
+def view_faqs():
+    return render_template('faqs.html')
+
+'''@app.route('/stories-library/<name>')
 def view_demo_1():
     return render_template('demo-1.html', name='Justin')
 
