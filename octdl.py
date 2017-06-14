@@ -20,7 +20,7 @@ def view_storieslibrary():
     origins = ["Zimbabwe", "U.S.A.", "Germany", "Australia"]
     types = ["fable", "fable", "poem", "play"]
     themes = ["Love, War", "Friendship", "Racism", "Learning"]
-    return render_template('stories-library.html', names=names, authors=authors, dates=dates, origins=origins, types=types, themes=themes)
+    return render_template('stories-library.html', name=names, author=authors, date=dates, origin=origins, type=types, theme=themes)
 
 #page with training videos
 @app.route('/training-videos')
