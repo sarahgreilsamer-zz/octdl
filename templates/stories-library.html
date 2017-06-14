@@ -41,24 +41,41 @@
 
 					<tbody>
 						<tr>
+							<indent>
 							{% for name in names %}
-    						<td>{{ name }}</td>
-    						{% end for %}
+    							<td>{{ name }}</td>
+    							{% end for %}
+							</indent>
+							
+							<indent>
 							{% for author in authors %}
 							<td>{{ author }}</td>
 							{% end for %}
+							</indent>
+							
+							<indent>
 							{ for date in dates %}
 							<td>{{ date }}</td>
 							{% end for %}
+							</indent>
+							
+							<indent>
 							{% for origin in origins %}
 							<td>{{ origin }}</td>
 							{% end for %}
+							</indent>
+							
+							<indent>
 							{% for type in types %}
 							<td>{{ type }}</td>
 							{% end for %}
+							</indent>
+							
+							<indent>
 							{% for theme in themes %}
 							<td>{{ theme }}</td>
 							{% end for %}
+							</indent>
 						</tr>
 					</tbody>
 				</table>
