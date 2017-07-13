@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Current Library</title>
+    <link rel="stylesheet" href="/css/screen.css">
+</head>
+<body>
+
+    <div class="menu-header">
+			<header>
+				<h1>Occidental Children's Theater Digital Library</h1>
+				<h2>Current Library</h2>
+
+				<nav class="site-nav">
+					<ul class="list-pages">
+						<li><a href="/">Home</a></li>
+						<li><a href="/stories-menu">Stories Library</a></li>
+						<li><a href="/training-videos">Training Videos</a></li>
+						<li><a href="/photo-gallery">Photo Gallery</a></li>
+                        <li><a href="/faqs">Frequently Asked Questions</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<div class="advanced-search">
+			</div>
+
+			<div class="all-stories- table">
+				<table class="all-stories-table">
+					<thead>
+						<tr>
+							<th class="col-short-title">Short Title</th>
+							<th class="col-full-title">Full Title</th>
+							<th class="col-origin">Origin</th>
+							<th class="col-book">Book</th>
+							<th class="col-votes">Votes</th>
+							<th class="col-text">Text</th>
+						</tr>
+					</thead>
+
+					<tbody>
+							{% for story in stories %}
+							<tr>
+								{% for attribute in story %}
+									{% if "http" in attribute %}
+										<td class="story-link"><a href="{{ attribute }}">Click Here</a></td>
+									{% else %}
+										<td class="simple-story-attribute">{{ attribute }}</td>
+									{% endif %}
+								{% endfor %}
+							</tr>
+							{% endfor %}
+					</tbody>
+				</table>
+			</div>
+    </div>
+
+
+    <footer>
+        <p>&copy; 2017 Occidental Children's Theater. Web Design by Sarah Greilsamer.</p>
+    </footer>
+
+</body>
+</html>
