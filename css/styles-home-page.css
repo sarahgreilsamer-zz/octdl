@@ -12,6 +12,7 @@ h1 {
 }
 
 .site-nav li {
+	list-style: none;
 	padding: 20px;
 	margin-bottom: 20px;
 	width: 150px;
@@ -23,6 +24,15 @@ h1 {
 	border-right: 1px solid #808080;
 	text-align: center;
 	size: 125%;
+}
+
+.site-nav a {
+	text-decoration: none;
+	color: #808080;
+	padding: 10px 20px;
+	border: 1px #808080;
+	size: 125%;
+	text-align: center;
 }
 
 footer {
