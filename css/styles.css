@@ -20,5 +20,27 @@ h1 {
 
 footer {
 font-size: 75%;
-padding-top: 700px;
+}
+
+.home-page-menu {
+    margin-top: 20px;
+}
+
+.home-page-menu ul {
+    margin: 0;
+    padding: 0;
+}
+
+.home-page-menu li {
+    list-style: none;
+    float: center;
+    margin-right: 10px;
+}
+
+.home-page-menu a {
+    text-decoration: none;
+    color: Black;
+    padding: 10px 20px;
+    border: 3px solid Black;
+    display: block;
 }
