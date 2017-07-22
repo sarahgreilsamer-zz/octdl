@@ -111,6 +111,14 @@ class Story:
 def view_css(file):
     return send_from_directory('css', file)
 
+@app.route('/images/<file>')
+def view_images(file):
+    return send_from_directory('images', file)
+
+@app.route('/js/<file>')
+def view_js(file):
+    return send_from_directory('js', file)
+
 if __name__ == '__main__':
     chdir(dirname(realpath(expanduser(__file__))))
     app.run(debug=True)
