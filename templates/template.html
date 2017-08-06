@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Current Library</title>
+	<link rel="stylesheet" href="/css/screen.css">
+</head>
+<body>
+
+			<div class="all-stories- table">
+				<table class="all-stories-table">
+					<thead>
+						<tr>
+							<th class="col-title">Title</th>
+							<th class="col-origin">Origin</th>
+							<th class="col-book">Book</th>
+						</tr>
+					</thead>
+
+					<tbody>
+							{% for story in stories %}
+							<tr>
+								{% for attribute in story %}
+									{% if attribute == story[0] %}
+										<td class="title-link"><a href="{{ story[-1] }}">{{ attribute }}</a></td>
+									{% elif attribute == story[-1] %}
+										pass
+									{% elif %}
+										<td class="other-attributes">{{ attribute }}</td>
+									{% endif %}
+								{% endfor %}
+							</tr>
+							{% endfor %}
+					</tbody>
+				</table>
+			</div>
+    </div>
+
+
+    <footer>
+        <p>&copy; 2017 Occidental Children's Theater. Web Design by Sarah Greilsamer.</p>
+    </footer>
+
+</body>
+</html>

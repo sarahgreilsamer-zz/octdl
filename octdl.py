@@ -15,6 +15,27 @@ from os.path import dirname, realpath, expanduser
 
 from flask import Flask, render_template, send_from_directory
 
+# JUSTIN'S SUBITIZE IMPORTS
+
+from collections import namedtuple
+from datetime import datetime
+from os.path import exists as file_exists, join as join_path
+
+from flask import Flask, render_template, abort, request, send_from_directory, url_for, redirect
+from sqlalchemy.sql.expression import asc, desc
+
+from models import create_session
+from models import Semester
+from models import TimeSlot, Building, Room, Meeting
+from models import Core, Department, Course
+from models import Person
+from models import OfferingMeeting, OfferingCore, OfferingInstructor, Offering
+from models import CourseInfo
+from subitizelib import filter_study_abroad, filter_by_search
+from subitizelib import filter_by_semester, filter_by_department, filter_by_number, filter_by_instructor
+from subitizelib import filter_by_units, filter_by_core, filter_by_meeting, filter_by_openness
+from subitizelib import sort_offerings
+
 # FOLLOWING CODE TO USE GOOGLE API
 
 import httplib2
@@ -28,82 +49,53 @@ from oauth2client.file import Storage
 
 app = Flask(__name__)
 
-# Creating pages
-
-# Home page
-@app.route('/')
-def view_homepage():
-    return render_template('home-page.html')
+FILE_NAME = "Stories Library"
 
 
-@app.route('/stories-menu')
-def view_storiesmenu():
-    return render_template('stories-menu.html')
-
-# Stories library with fake data for testing purposes
-@app.route('/stories-menu/current-library')
-def view_storieslibrary():
+# data has to be on sheet 1, if not change sheet number
+def get_data(file_name):
     # Use creds to create a client to interact with the Google Drive API
     scope = ['https://spreadsheets.google.com/feeds']
     creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
     client = gspread.authorize(creds)
     # Find a workbook by name and open the first sheet
-    sheet = client.open("Stories Library").sheet1
+    sheet = client.open(file_name).sheet1
     # Extract and print all of the values
     # List of lists
     table = sheet.get_all_values()
     stories = table[1:]
-    print(stories)
     # Sort in alphabetical order of title
     stories.sort(key=lambda story: story[0])
-    return render_template('current-library.html', stories=stories)
+    return stories  # list of lists
 
 
-# Page with training videos
-@app.route('/training-videos')
-def view_trainingvideos():
-    return render_template('training-videos.html')
+def get_options(stories_list):  # use list of lists from get_data
+    stories_dict = {}
+    for each_story in stories_list:
+        stories_dict['titles'] = each_story[0]
+        stories_dict['books'] = each_story[1]
+        stories_dict['origins'] = each_story[2]
+    return stories_dict  # return dictionary of stories
 
 
-# Gallery of photos from previous shows
-@app.route('/photo-gallery')
-def view_photogallery():
-    return render_template('photo-gallery.html')
+#def get_results(options_dict):
+    #
 
 
-# Page of frequently asked questions
-@app.route('/faqs')
-def view_faqs():
-    return render_template('faqs.html')
-
-
-# Classes for each type of object on my website
+@app.route('/')
+def view_page():
+    stories = get_data(FILE_NAME)  # list of lists
+    dropdown_options = get_options(stories)  # dictionary of stories
+    parameters = request.args.to_dict()  # user's input
+    return render_template('template.html', stories=stories)
 
 
 class Story:
-    def __init__(self, short_title, full_title, origin, book, votes, text):
-        self.short_title = short_title
-        self.full_title = full_title
+    def __init__(self, title, origin, book, link2pdf):
+        self.title = title
         self.origin = origin
         self.book = book
-        self.votes = votes
-        self.text = text
-
-
-# Exercise should be the name given to the exercise demonstrated in the video
-# The name should be the name which will be displayed on the website
-class Video:
-    def __init__(self, exercise, year):
-        self.exercise = exercise
-        self.year = year
-
-
-# People stands for people in the picture
-class Photo:
-    def __init__(self, year, title, people):
-        self.year = year
-        self.title = title
-        self.people = people
+        self.link2pdf = link2pdf
 
 
 # CODE NOT TO BE CHANGED #
