@@ -67,20 +67,24 @@ def get_options(stories_list):  # use list of lists from get_data
     stories_list.append(stories_book)
     stories_list.append(stories_origin)
     stories_list.append(stories_link2pdf)
-    return stories_list  # return dictionary of stories
+    return stories_list  # return list of stories characteristics
 
 
 def get_userinput():
-    user_input = request.args.to_dict() # QUESTION: is output one string or string of strings?
+    user_input = request.args.to_dict()  # output one string
     user_inputlist = []
     user_inputlist.append(user_input['title'])
     user_inputlist.append(user_input['book'])
     user_inputlist.append(user_input['origin'])
     return user_inputlist
 
+
 def get_results(stories_list, user_inputlist):
-
-
+    query_result = []
+    for each_story in stories_list:
+        if (str.split(str.lower(user_inputlist[0])) in str.lower(each_story[0]) or str.split(str.lower(user_inputlist[0])) == '') and (str.split(str.lower(user_inputlist[1])) in str.lower(each_story[1]) or str.split(str.lower(user_inputlist[1])) == '') and (str.split(str.lower(user_inputlist[2])) in str.lower(each_story[2]) or str.split(str.lower(user_inputlist[2])) == ''):
+            query_result.append(each_story)
+    return query_result  # should be a list of lists where is list is a story that fits the criteria
 
 
 @app.route('/')
@@ -88,7 +92,7 @@ def view_page():
     stories = get_data(FILE_NAME)  # list of lists [[story 1],[story 2],...]
     stories_list = get_options(stories)  # all options, list of lists [[all titles],[all books],...]
     user_input = get_userinput()  # user's input in a list [title, book, origin]
-    results = get_results(dropdown_options, user_input)  #results of the query
+    results = get_results(stories_list, user_input)  #results of the query
     return render_template('template.html', stories=stories, results=results)
 
 
@@ -109,4 +113,9 @@ def view_css(file):
 if __name__ == '__main__':
     chdir(dirname(realpath(expanduser(__file__))))
     app.run(debug=True)
+    stories = get_data(FILE_NAME)  # list of lists [[story 1],[story 2],...]
+    stories_list = get_options(stories)  # all options, list of lists [[all titles],[all books],...]
+    user_input = get_userinput()  # user's input in a list [title, book, origin]
+    results = get_results(stories_list, user_input)  #results of the query
+
 
