@@ -53,28 +53,43 @@ def get_data(file_name):
 
 
 def get_options(stories_list):  # use list of lists from get_data
-    stories_dict = {}
+    stories_list = []
+    stories_title = []
+    stories_book = []
+    stories_origin = []
+    stories_link2pdf = []
     for each_story in stories_list:
-        stories_dict['titles'] = each_story[0]
-        stories_dict['books'] = each_story[1]
-        stories_dict['origins'] = each_story[2]
-    return stories_dict  # return dictionary of stories
+        stories_title.append(each_story[0])
+        stories_book.append(each_story[1])
+        stories_origin.append(each_story[2])
+        stories_link2pdf.append(each_story[3])
+    stories_list.append(stories_title)
+    stories_list.append(stories_book)
+    stories_list.append(stories_origin)
+    stories_list.append(stories_link2pdf)
+    return stories_list  # return dictionary of stories
 
 
-def get_results(dropdown_options, parameters):
-    results = []
-    for each_dictkey in parameters:
-        if each_dictkey in dropdown_options:
-            results.append(dropdown_options['titles'])
+def get_userinput():
+    user_input = request.args.to_dict() # QUESTION: is output one string or string of strings?
+    user_inputlist = []
+    user_inputlist.append(user_input['title'])
+    user_inputlist.append(user_input['book'])
+    user_inputlist.append(user_input['origin'])
+    return user_inputlist
+
+def get_results(stories_list, user_inputlist):
+
 
 
 
 @app.route('/')
 def view_page():
-    stories = get_data(FILE_NAME)  # list of lists
-    #dropdown_options = get_options(stories)  # dictionary of stories
-    #parameters = request.args.to_dict()  # user's input
-    return render_template('template.html', stories=stories)
+    stories = get_data(FILE_NAME)  # list of lists [[story 1],[story 2],...]
+    stories_list = get_options(stories)  # all options, list of lists [[all titles],[all books],...]
+    user_input = get_userinput()  # user's input in a list [title, book, origin]
+    results = get_results(dropdown_options, user_input)  #results of the query
+    return render_template('template.html', stories=stories, results=results)
 
 
 class Story:
