@@ -32,6 +32,7 @@ from oauth2client.file import Storage
 
 app = Flask(__name__)
 
+
 FILE_NAME = "Stories Library"
 
 
@@ -74,8 +75,8 @@ def get_userinput():
     user_input = request.args.to_dict()  # output one string
     user_inputlist = []
     user_inputlist.append(user_input['title'])
-    user_inputlist.append(user_input['book'])
     user_inputlist.append(user_input['origin'])
+    user_inputlist.append(user_input['book'])
     return user_inputlist
 
 
@@ -84,7 +85,7 @@ def get_results(stories_list, user_inputlist):
     for each_story in stories_list:
         if (str.split(str.lower(user_inputlist[0])) in str.lower(each_story[0]) or str.split(str.lower(user_inputlist[0])) == '') and (str.split(str.lower(user_inputlist[1])) in str.lower(each_story[1]) or str.split(str.lower(user_inputlist[1])) == '') and (str.split(str.lower(user_inputlist[2])) in str.lower(each_story[2]) or str.split(str.lower(user_inputlist[2])) == ''):
             query_result.append(each_story)
-    return query_result  # should be a list of lists where is list is a story that fits the criteria
+    return query_result  # should be a list of lists where list is a story that fits the criteria
 
 
 @app.route('/')
@@ -92,8 +93,8 @@ def view_page():
     stories = get_data(FILE_NAME)  # list of lists [[story 1],[story 2],...]
     stories_list = get_options(stories)  # all options, list of lists [[all titles],[all books],...]
     user_input = get_userinput()  # user's input in a list [title, book, origin]
-    results = get_results(stories_list, user_input)  #results of the query
-    return render_template('template.html', stories=stories, results=results)
+    query_results = get_results(stories_list, user_input)  #results of the query
+    return render_template('template.html', stories=stories, query_results=query_results)
 
 
 class Story:
