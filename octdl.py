@@ -118,5 +118,3 @@ if __name__ == '__main__':
     stories_list = get_options(stories)  # all options, list of lists [[all titles],[all books],...]
     user_input = get_userinput()  # user's input in a list [title, book, origin]
     results = get_results(stories_list, user_input)  #results of the query
-
-
