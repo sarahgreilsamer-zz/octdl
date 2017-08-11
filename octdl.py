@@ -33,28 +33,32 @@ from oauth2client.file import Storage
 app = Flask(__name__)
 
 
-FILE_NAME = "Stories Library"
+FILE_NAME1 = "Stories Library"
+FILE_NAME2 = "Added Stories"
 
 
 # data has to be on sheet 1, if not change sheet number
-def get_data(file_name):
+def get_data(file_name1, file_name2):
     # Use creds to create a client to interact with the Google Drive API
     scope = ['https://spreadsheets.google.com/feeds']
     creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
     client = gspread.authorize(creds)
     # Find a workbook by name and open the first sheet
-    sheet = client.open(file_name).sheet1
+    sheet1 = client.open(file_name1).sheet1  # Original story file verified by Adam and Tristan
+    sheet2 = client.open(file_name2).sheet1  # Answers to form
     # Extract and print all of the values
     # List of lists
-    table = sheet.get_all_values()
-    stories = table[1:]
-    # Sort in alphabetical order of title
+    table1 = sheet1.get_all_values()
+    table2 = sheet2.get_all_values()
+    stories = table1[1:]  # Grab all columns
+    stories.append(table2[2:4])  # Only grab the three columns that have relevant information
+    # Sort by alphabetical order of title
     stories.sort(key=lambda story: story[0])
     return stories  # list of lists
 
 
 def get_options(stories_list):  # use list of lists from get_data
-    stories_list = []
+    all_stories = []
     stories_title = []
     stories_book = []
     stories_origin = []
@@ -64,37 +68,50 @@ def get_options(stories_list):  # use list of lists from get_data
         stories_book.append(each_story[1])
         stories_origin.append(each_story[2])
         stories_link2pdf.append(each_story[3])
-    stories_list.append(stories_title)
-    stories_list.append(stories_book)
-    stories_list.append(stories_origin)
-    stories_list.append(stories_link2pdf)
+    all_stories.append(stories_title)
+    all_stories.append(stories_book)
+    all_stories.append(stories_origin)
+    all_stories.append(stories_link2pdf)
     return stories_list  # return list of stories characteristics
 
+#FIXME
 
-def get_userinput():
-    user_input = request.args.to_dict()  # output one string
+
+def get_userinput(parameters):  # parameters is the result of args to dict
     user_inputlist = []
-    user_inputlist.append(user_input['title'])
-    user_inputlist.append(user_input['origin'])
-    user_inputlist.append(user_input['book'])
+    user_inputlist.append(parameters['title'])
+    user_inputlist.append(parameters['origin'])
+    user_inputlist.append(parameters['book'])
     return user_inputlist
+
+
+#FIXME
 
 
 def get_results(stories_list, user_inputlist):
     query_result = []
-    for each_story in stories_list:
-        if (str.split(str.lower(user_inputlist[0])) in str.lower(each_story[0]) or str.split(str.lower(user_inputlist[0])) == '') and (str.split(str.lower(user_inputlist[1])) in str.lower(each_story[1]) or str.split(str.lower(user_inputlist[1])) == '') and (str.split(str.lower(user_inputlist[2])) in str.lower(each_story[2]) or str.split(str.lower(user_inputlist[2])) == ''):
-            query_result.append(each_story)
+    for each_story in stories_list:  # looking at list of all the stories where each story is a list
+        for each_term in (str.split(str.lower(user_inputlist[0]))):  # for each key word entered by the user
+            if each_term in str.lower(each_story[0]) or str.lower(each_story[0]) == '':  # if key word in title of story
+                query_result.append(each_story)  # add this story to the results
+        for each_term in (str.split(str.lower(user_inputlist[1]))):
+            if each_term in str.lower(each_story[1]) or str.lower(each_story[1]) == '':
+                query_result.append(each_story)
+        for each_term in (str.split(str.lower(user_inputlist[2]))):
+            if each_term in str.lower(each_story[2]) or str.lower(each_story[2]) == '':
+                query_result.append(each_story)
+        query_result = list(set(query_result))  # removing duplicates in the query results
     return query_result  # should be a list of lists where list is a story that fits the criteria
 
 
 @app.route('/')
 def view_page():
-    stories = get_data(FILE_NAME)  # list of lists [[story 1],[story 2],...]
+    stories = get_data(FILE_NAME1, FILE_NAME2)  # list of lists [[story 1],[story 2],...]
     stories_list = get_options(stories)  # all options, list of lists [[all titles],[all books],...]
-    user_input = get_userinput()  # user's input in a list [title, book, origin]
-    query_results = get_results(stories_list, user_input)  #results of the query
-    return render_template('template.html', stories=stories, query_results=query_results)
+    parameters = request.args.to_dict()  # args to dict, dictionary where keys name of field, and user input are values of keys
+    user_input = get_userinput(parameters) # user's input in a list [title, book, origin]
+    query_results = get_results(stories_list, user_input)  # results of the query
+    return render_template('template.html', stories=stories, dictionary=str(parameters), query_results=query_results)
 
 
 class Story:
@@ -114,7 +131,7 @@ def view_css(file):
 if __name__ == '__main__':
     chdir(dirname(realpath(expanduser(__file__))))
     app.run(debug=True)
-    stories = get_data(FILE_NAME)  # list of lists [[story 1],[story 2],...]
+    stories = get_data(FILE_NAME1, FILE_NAME2)  # list of lists [[story 1],[story 2],...]
     stories_list = get_options(stories)  # all options, list of lists [[all titles],[all books],...]
     user_input = get_userinput()  # user's input in a list [title, book, origin]
-    results = get_results(stories_list, user_input)  #results of the query
+    results = get_results(stories_list, user_input)  # results of the query

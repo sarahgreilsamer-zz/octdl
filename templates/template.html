@@ -7,7 +7,21 @@
 </head>
 <body>
 
-	<div class="all-stories- table">
+	<div class="add-story-button">
+		<a href="https://goo.gl/forms/w0n1MbcLYucNveur2">Add Story</a>
+	</div>
+
+	<div class="advanced-search">
+		<form action="/" method="get">
+    		Title: <input type="text" name="title"><br>
+    		Origin: <input type="text" name="origin"><br>
+			Book: <input type="text" name="book"><br>
+			<input type="submit" value="Submit"><br>
+		</form>
+		{{ dictionary }}
+	</div>
+
+	<div class="all-stories-table">
 				<table class="all-stories-table">
 					<thead>
 						<tr>
@@ -20,22 +34,15 @@
 					<tbody>
 							{% for story in stories %}
 							<tr>
-								{% for attribute in story %}
-									{% if attribute == story[0] %}
-										<td class="title-link"><a href="{{ story[-1] }}">{{ attribute }}</a></td>
-									{% elif attribute == story[-1] %}
-										pass
-									{% elif %}
-										<td class="other-attributes">{{ attribute }}</td>
-									{% endif %}
-								{% endfor %}
+								<td class="title-link"><a href="{{ story[-1] }}">{{ story[0] }}</a></td>
+								<td class="origin">{{ story[1] }}</td>
+								<td class="book">{{ story[2] }}</td>
 							</tr>
 							{% endfor %}
 					</tbody>
 				</table>
 			</div>
     </div>
-
 
     <footer>
         <p>&copy; 2017 Occidental Children's Theater. Web Design by Sarah Greilsamer.</p>
