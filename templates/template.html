@@ -31,7 +31,7 @@
 					</thead>
 
 					<tbody>
-							{% for story in stories %}
+							{% for story in query_results %}
 							<tr>
 								<td class="title-link"><a href="{{ story[-1] }}">{{ story[0] }}</a></td>
 								<td class="origin">{{ story[1] }}</td>

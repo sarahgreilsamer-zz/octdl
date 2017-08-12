@@ -102,43 +102,66 @@ def get_userinput(parameters):  # parameters is the result of args to dict
 
 def get_results(stories_list, user_inputlist):
     query_result = []
-    for each_story in stories_list:  # looking at list of all the stories where each story is a list
-        for each_term in (str.split(str.lower(user_inputlist[0]))):  # for each key word entered by the user
-            if each_term in str.lower(each_story[0]) or str.lower(each_story[0]) == '':  # if key word in title of story
-                query_result.append(each_story)  # add this story to the results
-    stories_list = query_result
+    title_keywords = []
+    book_keywords = []
+    origin_keywords = []
+    for each_string in user_inputlist[0].split():
+        title_keywords.append(each_string)
+    for each_string in user_inputlist[1].split():
+        origin_keywords.append(each_string)
+    for each_string in user_inputlist[2].split():
+        book_keywords.append(each_string)
+    if title_keywords != []:
+        for each_story in stories_list:  # looking at list of all the stories where each story is a list  # for each key word entered by the user
+            title = []
+            for each_word in each_story[0].split():
+                each_word = each_word.lower()
+                title.append(each_word)
+            for each_term in title_keywords:  # looking at all the key terms entered by the user
+                if each_term in title:
+                    query_result.append(each_story)
+        stories_list = query_result
     query_result = []
-    for each_story in stories_list:  # looking at list of all the stories where each story is a list
-        for each_term in (str.split(str.lower(user_inputlist[1]))):
-            if each_term in str.lower(each_story[1]) or str.lower(each_story[1]) == '':
-                query_result.append(each_story)
-    stories_list = query_result
+    if origin_keywords != []:
+        for each_story in stories_list:  # looking at list of all the stories where each story is a list  # for each key word entered by the user
+            origin = []
+            for each_word in each_story[1].split():
+                each_word = each_word.lower()
+                origin.append(each_word)
+            for each_term in origin_keywords:  # looking at all the key terms entered by the user
+                if each_term in origin:
+                    query_result.append(each_story)
+        stories_list = query_result
     query_result = []
-    for each_story in stories_list:  # looking at list of all the stories where each story is a list
-        for each_term in (str.split(str.lower(user_inputlist[2]))):
-            if each_term in str.lower(each_story[2]) or str.lower(each_story[2]) == '':
-                query_result.append(each_story)
-        query_result = list(set(query_result))  # removing duplicates in the query results
+    if book_keywords != []:
+        for each_story in stories_list:  # looking at list of all the stories where each story is a list  # for each key word entered by the user
+            book = []
+            for each_word in each_story[2].split():
+                each_word = each_word.lower()
+                book.append(each_word)
+            for each_term in book_keywords:  # looking at all the key terms entered by the user
+                if each_term in book:
+                    query_result.append(each_story)
+        stories_list = query_result
+    query_result = stories_list
     return query_result  # should be a list of lists where list is a story that fits the criteria
 
 
 @app.route('/')
 def view_page():
     stories = get_data(FILE_NAME1, FILE_NAME2)  # list of lists [[story 1],[story 2],...]
-    stories_list = get_options(stories)  # all options, list of lists [[all titles],[all books],...]
+    #stories_list = get_options(stories)  # all options, list of lists [[all titles],[all books],...]
     parameters = request.args.to_dict()  # args to dict, dictionary where keys name of field, and user input are values of keys
     if len(parameters) == 0:
         parameters['title'] = ''
-        parameters['origin'] = ''
         parameters['book'] = ''
-        query_results = [['N/A', 'N/A', 'N/A', 'N/A']]
+        parameters['origin'] = ''
+        query_results = stories
     else:
         user_input = get_userinput(parameters) # user's input in a list [title, book, origin]
-        query_results = get_results(stories_list, user_input)  # results of the query
-    return render_template('template.html', stories=stories, dictionary=str(parameters), query_results=query_results)
+        query_results = get_results(stories, user_input)  # results of the query
+    return render_template('template.html', dictionary=str(parameters), query_results=query_results)
 
-
-@app.route('/query-result')
 
 class Story:
     def __init__(self, title, origin, book, link2pdf):
