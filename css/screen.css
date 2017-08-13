@@ -7,17 +7,18 @@ html {
 
 h1 {
 	font-weight: lighter;
-	size: 200%;
+	size: 400%;
 }
 
 h2 {
 	font-weight: lighter;
-	size: 200%;
+	size: 400%;
 }
 
 body .add-story-button {
 	text-decoration: none;
 	font-size: 120%;
+	padding: 20px;
 }
 
 body .advanced-search {
@@ -31,11 +32,14 @@ body .all-stories-table {
 
 body .table-header {
 	size: 200%;
+	font-weight: bold;
+	background-color: grey;
 
 }
 
 body .table-content {
 	size: 150%;
 	text-decoration-color: black;
+	text-align: left;
 	
 }
