@@ -2,50 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Current Library</title>
-	<link rel="stylesheet" href="/css/screen.css">
+    <title>OCT Digital Library</title>
+	<link rel="stylesheet" type="text/css" href="/css/screen.css">
 </head>
-<body>
+<link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+    <header>
+        <h1>Occidental Children's Theater</h1>
+        <h2>Digital Library</h2>
+    </header>
 
-	<div class="add-story-button">
-		<a href="https://goo.gl/forms/w0n1MbcLYucNveur2">Add Story</a>
-	</div>
+    <body>
 
-	<div class="advanced-search">
-		<form action="/" method="get">
-    		Title: <input type="text" name="title"><br>
-    		Origin: <input type="text" name="origin"><br>
-			Book: <input type="text" name="book"><br>
-			<input type="submit" value="Submit"><br>
-		</form>
-	</div>
+        <div class="add-story-button">
+            <a target="_blank" href="https://goo.gl/forms/w0n1MbcLYucNveur2">Add Story</a>
+        </div>
 
-	<div class="all-stories-table">
-				<table class="all-stories-table">
-					<thead>
-						<tr>
-							<th class="col-title">Title</th>
-							<th class="col-origin">Origin</th>
-							<th class="col-book">Book</th>
-						</tr>
-					</thead>
+        <div class="advanced-search">
+            <form action="/" method="get">
+                Title: <input type="text" name="title"><br>
+                Origin: <input type="text" name="origin"><br>
+                Book: <input type="text" name="book"><br>
+                <input type="submit" value="Submit"><br>
+            </form>
+        </div>
 
-					<tbody>
-							{% for story in query_results %}
-							<tr>
-								<td class="title-link"><a href="{{ story[-1] }}">{{ story[0] }}</a></td>
-								<td class="origin">{{ story[1] }}</td>
-								<td class="book">{{ story[2] }}</td>
-							</tr>
-							{% endfor %}
-					</tbody>
-				</table>
-			</div>
-    </div>
+        <div class="all-stories-table">
+                    <table>
+                        <div class="table-header">
+                            <thead>
+                                <tr>
+                                    <th class="table-header">Title</th>
+                                    <th class="table-header">Origin</th>
+                                    <th class="table-header">Book</th>
+                                </tr>
+                            </thead>
+                        </div>
+                        
+                        <div class="table-content">
+                            <tbody>
+                                    {% for story in query_results %}
+                                    <tr>
+                                        <td class="title-link"><a target="_blank" href="{{ story[-1] }}">{{ story[0] }}</a></td>
+                                        <td class="origin">{{ story[1] }}</td>
+                                        <td class="book">{{ story[2] }}</td>
+                                    </tr>
+                                    {% endfor %}
+                            </tbody>
+                        </div>
+                    </table>
+        </div>
 
-    <footer>
-        <p>&copy; 2017 Occidental Children's Theater. Web Design by Sarah Greilsamer.</p>
-    </footer>
+        <footer>
+            <p>&copy; 2017 Occidental Children's Theater. Web Design by Sarah Greilsamer.</p>
+        </footer>
+    </body>
 
-</body>
+
 </html>

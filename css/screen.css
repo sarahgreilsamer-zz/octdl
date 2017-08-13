@@ -1,0 +1,42 @@
+html {
+	font-family: 'Dosis', sans-serif;
+	background-image: 
+	margin-right: auto;
+	margin-left: auto;
+	background-image:url(../images/dracula3.png);
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    background-color: black;
+}
+
+h2 {
+	text-align: center;
+	color: white;
+	color-background: black;
+}
+
+body .add-story-button {
+	text-align: center;
+	text-decoration: none;
+	padding: 20px;
+	background-color: black;
+	color: white;
+	vertical-align: middle;
+	display: block;
+	font-size: 120%;
+}
+
+body .advanced-search {
+
+}
+
+body .table-header {
+
+}
+
+body .table-content {
+	
+}
