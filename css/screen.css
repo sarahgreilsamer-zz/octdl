@@ -1,25 +1,20 @@
 html {
-	font-family: 'Dosis', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	background-image: 
 	margin-right: auto;
 	margin-left: auto;
-	background-image:url(../images/dracula3.png);
+	text-align: center;
 }
 
 h1 {
-    text-align: center;
-    color: white;
-    background-color: black;
+
 }
 
 h2 {
-	text-align: center;
-	color: white;
-	color-background: black;
+
 }
 
 body .add-story-button {
-	text-align: center;
 	text-decoration: none;
 	padding: 20px;
 	background-color: black;
