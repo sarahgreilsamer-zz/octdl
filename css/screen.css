@@ -1,3 +1,7 @@
+/* teal color #17A589, grey color #99A3A4 */ 
+
+/* Styling the entire page */
+
 html {
 	font-family: 'Roboto', sans-serif; 
 	margin-right: auto;
@@ -5,15 +9,23 @@ html {
 	text-align: center;
 }
 
+/* Header */
+
 h1 {
 	font-weight: lighter;
 	size: 400%;
+	color: #17A589;
+	background-color: #99A3A4;
 }
 
 h2 {
 	font-weight: lighter;
 	size: 400%;
+	color: #17A589;
+	background-color: #99A3A4;
 }
+
+/* Add Story Button */
 
 body .add-story-button {
 	text-decoration: none;
@@ -21,25 +33,35 @@ body .add-story-button {
 	padding: 20px;
 }
 
+/* Search Story Fields */
+
 body .advanced-search {
 	size: 200%;
 }
 
+/* Table */
+
 body .all-stories-table {
-	margin-right: auto;
-	margin-left: auto;
+	margin: 0px auto;
 }
 
 body .table-header {
 	size: 200%;
 	font-weight: bold;
-	background-color: grey;
+	color: white;
+	background-color: black;
 
 }
 
 body .table-content {
 	size: 150%;
-	text-decoration-color: black;
-	text-align: left;
+	color: white;
+	background-color: #17A589;
 	
+}
+
+/* Footer */
+
+footer {
+
 }
