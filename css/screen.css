@@ -1,17 +1,18 @@
 html {
-	font-family: 'Roboto', sans-serif;
-	background-image: 
+	font-family: 'Roboto', sans-serif; 
 	margin-right: auto;
 	margin-left: auto;
 	text-align: center;
 }
 
 h1 {
-
+	font-weight: lighter;
+	size: 200%;
 }
 
 h2 {
-
+	font-weight: lighter;
+	size: 200%;
 }
 
 body .add-story-button {
@@ -25,13 +26,16 @@ body .add-story-button {
 }
 
 body .advanced-search {
-
+	size: 200%;
 }
 
 body .table-header {
+	size: 200%;
 
 }
 
 body .table-content {
+	size: 150%;
+	text-decoration-color: black;
 	
 }
