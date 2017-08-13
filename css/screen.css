@@ -17,16 +17,16 @@ h2 {
 
 body .add-story-button {
 	text-decoration: none;
-	padding: 20px;
-	background-color: black;
-	color: white;
-	vertical-align: middle;
-	display: block;
 	font-size: 120%;
 }
 
 body .advanced-search {
 	size: 200%;
+}
+
+body .all-stories-table {
+	margin-right: auto;
+	margin-left: auto;
 }
 
 body .table-header {
