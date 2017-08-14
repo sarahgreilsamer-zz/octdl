@@ -48,7 +48,7 @@ header h1 {
 }
 
 .add-story a:hover {
-	color: yellow;
+	color: red;
 }
 
 /* Search Story Fields */
@@ -56,12 +56,12 @@ header h1 {
 .as-title {
 	margin-top: 20px;
 	margin-bottom: 20px;
-	padding: 10px 20px;
 	text-align: center;
 	vertical-align: middle;
 	display: block;
 	background-color: #d6dcdc;
 	font-size: 125%;
+	list-style: none;
 }
 
 .advanced-search {
@@ -103,7 +103,7 @@ table tbody tr td a {
 
 table tbody tr td a:hover {
 	text-decoration: none;
-	color: yellow;
+	color: red;
 }
 
 /* Footer */
