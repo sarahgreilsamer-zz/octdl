@@ -47,8 +47,9 @@ header h1 {
 }
 
 .add-story a:hover {
-	background-color: #E74C3C;
+	background-color: yellow;
 	color: black;
+	font-size: 125%;
 }
 
 /* Search Story Fields */
@@ -70,6 +71,7 @@ table {
 table th {
 	text-align: left;
 	font-weight: bolder;
+	font-size: 125%;
 	background-color: #d6dcdc;
 }
 
@@ -90,8 +92,7 @@ table tbody tr td a {
 
 table tbody tr td a:hover {
 	text-decoration: none;
-	color: black;
-	background-color: #E74C3C;
+	color: yellow;
 }
 
 /* Footer */
