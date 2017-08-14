@@ -65,13 +65,14 @@ header h1 {
 
 }
 
-.table-header th {
+.table-header {
 	background-color: #F2F4F4
 	font-weight: bold;
+	border: 0.5px solid #F2F4F4;
 }
 
 .table-content {
-
+	border: 0.5px solid #F2F4F4;
 	
 }
 
