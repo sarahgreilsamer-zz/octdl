@@ -40,17 +40,15 @@ header h1 {
 
 .add-story a {
 	text-decoration: none;
-	color: #E74C3C;
 	padding: 10px 20px;
-	border: 3px solid #F2F4F4;
 	text-align: center;
 	vertical-align: middle;
 	display: block;
-	background-color: #F2F4F4;
+	background-color: #d6dcdc;
 }
 
 .add-story a:hover {
-	background-color: #d6dcdc;
+	background-color: #E74C3C;
 }
 
 /* Search Story Fields */
@@ -62,25 +60,31 @@ header h1 {
 
 /* Table */
 
-.all-stories-table {
-
+table {
+	border-spacing: 0px;
+	border-collapse: collapse;
+	width: 100%;
 }
 
-.all-stories-table table .table-header-all thead tr th .table-header {
-	background-color: #F2F4F4
+table th {
+	text-align: left;
 	font-weight: bold;
-	border-top: 0.5px solid #F2F4F4;
-	border-bottom: 0.5px solid #F2F4F4;
+	color: #E74C3C;
+	background-color: #d6dcdc;
 }
 
-.all-stories-table table .table-content tbody tr td a {
+table th,
+table td {
+	border: 0.5px solid #d6dcdc;
+	padding: 8px;
+}
+
+table tbody tr: nth-child(even) td {
+	background-color: #F2F4F4;
+}
+
+table tbody tr td a {
 	text-decoration: none;
-	
-}
-
-.all-stories-table table .table-content tbody tr td {
-	border-top: 0.5px solid #F2F4F4;
-	border-bottom: 0.5px solid #F2F4F4;
 }
 
 /* Footer */
