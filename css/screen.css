@@ -1,9 +1,9 @@
-/* blue color #1B4F72, grey color #F2F4F4 */ 
+/* red color #E74C3C, grey color #F2F4F4 */
 
 /* Styling the entire page */
 
 html {
-	font-family: 'Roboto', sans-serif; 
+	font-family: 'Open Sans', sans-serif;
 	margin-right: auto;
 	margin-left: auto;
 	text-align: center;
@@ -15,14 +15,14 @@ h1 {
 	font-weight: lighter;
 	size: 400%;
 	color: #1B4F72;
-	background-color: #F2F4F4;
+	background-color: #E74C3C;
 }
 
 h2 {
 	font-weight: lighter;
 	size: 400%;
 	color: #1B4F72;
-	background-color: #F2F4F4;
+	background-color: #E74C3C;
 }
 
 /* Add Story Button */
