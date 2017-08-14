@@ -65,7 +65,7 @@ header h1 {
 
 }
 
-.table-header {
+.table-header th {
 	background-color: #F2F4F4
 	font-weight: bold;
 }
