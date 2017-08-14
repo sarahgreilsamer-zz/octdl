@@ -4,62 +4,62 @@
 
 html {
 	font-family: 'Open Sans', sans-serif;
-	margin-right: auto;
+}
+
+.container {
 	margin-left: auto;
-	text-align: center;
+	margin-right: auto;
+	padding-left: 40px;
+	padding-right: 40px;
+	box-sizing: border-box;
 }
 
 /* Header */
 
-h1 {
-	font-weight: lighter;
-	size: 400%;
+header h1 {
 	color: #E74C3C;
+	text-align: center;
 }
 
-h2 {
-	font-weight: lighter;
-	size: 400%;
-	color: #E74C3C;
-}
 
 /* Add Story Button */
 
 .add-story-button {
+	color: #E74C3C;
+	background-color: #F2F4F4;
 	text-decoration: none;
-	font-size: 120%;
-	padding: 20px;
+	padding: 20px 40px;
+	text-align: center;
+	vertical-align: middle;
 }
 
 /* Search Story Fields */
 
 .advanced-search {
-	size: 200%;
+
 }
 
 /* Table */
 
 .all-stories-table {
-	margin: 0px auto;
+
 }
 
 .table-header {
-	size: 200%;
-	font-weight: bold;
-	color: white;
-	background-color: black;
+
 
 }
 
 .table-content {
-	size: 150%;
-	color: white;
-	background-color: #17A589;
+
 	
 }
 
 /* Footer */
 
 footer {
-
+	font-size: 85%;
+	color: #F2F4F4;
+	padding-bottom: 20px;
+	padding-top: 20px;
 }

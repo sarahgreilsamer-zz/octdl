@@ -5,13 +5,18 @@
     <title>OCT Digital Library</title>
 	<link rel="stylesheet" type="text/css" href="/css/screen.css">
 </head>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
-    <header>
-        <h1>Occidental Children's Theater</h1>
-        <h2>Digital Library</h2>
-    </header>
 
-    <body>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+    
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Occidental Children's Theater</h1>
+            <h1>Digital Library</h1>
+        </header>
+
 
         <div class="add-story-button">
             <a target="_blank" href="https://goo.gl/forms/w0n1MbcLYucNveur2">ADD STORY</a>
@@ -37,7 +42,7 @@
                                 </tr>
                             </thead>
                         </div>
-                        
+                            
                         <div class="table-content">
                             <tbody>
                                     {% for story in query_results %}
@@ -55,7 +60,10 @@
         <footer>
             <p>&copy; 2017 Occidental Children's Theater. Web Design by Sarah Greilsamer.</p>
         </footer>
-    </body>
+
+    </div>
+
+</body>
 
 
 </html>
