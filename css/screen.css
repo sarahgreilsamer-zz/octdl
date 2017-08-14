@@ -60,6 +60,22 @@ header h1 {
 	width: 15%;
 }
 
+input[type="text"] {
+	width: 100%;
+	display: block;
+	box-sizing: border-box;
+	padding: 0 10px;
+	height: 40px;
+}
+
+input[type="submit"] {
+	width: 100%;
+	display: block;
+	box-sizing: border-box;
+	padding: 0 10px;
+	height: 40px;
+}
+
 /* Table */
 
 table {
