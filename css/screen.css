@@ -24,13 +24,29 @@ header h1 {
 
 /* Add Story Button */
 
-.add-story-button {
-	color: #E74C3C;
-	background-color: #F2F4F4;
+.add-story {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.add-story ul {
+	margin: 0px;
+	padding: 0px;
+}
+
+.add-story li {
+	list-style: none;
+}
+
+.add-story a {
 	text-decoration: none;
-	padding: 20px 40px;
+	color: #E74C3C;
+	padding: 10px 20px;
+	border: 3px solid #F2F4F4;
 	text-align: center;
 	vertical-align: middle;
+	display: block;
+	background-color: #F2F4F4;
 }
 
 /* Search Story Fields */
