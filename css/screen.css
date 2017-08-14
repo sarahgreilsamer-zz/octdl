@@ -58,11 +58,12 @@ header h1 {
 	margin-bottom: 20px;
 	font-weight: 125%;
 	width: 100%;
+	box-sizing: border-box;
 }
 
 form {
 	background-color: #d6dcdc;
-	padding: 20px 20px;
+	padding: 10px 10px;
 	text-align: center;
 	width: 100%;
 }
@@ -70,8 +71,9 @@ form {
 input[type="text"] {
 	display: block;
 	box-sizing: border-box;
-	padding: 0 10px;
-	height: 40px;
+	padding: 0px 10px;
+	height: 30px;
+	width: 100%;
 }
 
 form p {
