@@ -63,10 +63,11 @@ header h1 {
 form {
 	background-color: #d6dcdc;
 	padding: 30px 40px;
+	text-align: center;
+	width: 100%;
 }
 
 input[type="text"] {
-	min-width: 100%;
 	display: block;
 	box-sizing: border-box;
 	padding: 0 10px;
