@@ -44,19 +44,21 @@ header h1 {
 	vertical-align: middle;
 	display: block;
 	background-color: #d6dcdc;
+	font-size: 125%;
 }
 
 .add-story a:hover {
-	background-color: yellow;
-	color: black;
-	font-size: 125%;
+	color: yellow;
 }
 
 /* Search Story Fields */
 
 .advanced-search {
 	text-align: center;
-	margin-bottom: 20px; 
+	margin-bottom: 20px;
+	font-weight: 125%;
+	width: 15%;
+	text-align: left;
 
 }
 
