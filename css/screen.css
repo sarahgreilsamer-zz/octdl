@@ -115,11 +115,11 @@ table tbody tr td a:hover {
 	text-decoration: none;
 }
 
-table tbody tr:nth-child(even) td:hover {
+table tbody tr:nth-child(even) td a:hover {
 	background-color: #ff751a;
 }
 
-table tbody tr:nth-child(odd) td:hover {
+table tbody tr:nth-child(odd) td a:hover {
 	background-color: #ff751a;
 }
 
