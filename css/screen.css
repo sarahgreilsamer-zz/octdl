@@ -23,21 +23,21 @@ header h1 {
 
 /* Add Story Button */
 
-.label {
+.add-story {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
 
-.label ul {
+.add-story ul {
 	margin: 0px;
 	padding: 0px;
 }
 
-.label li {
+.add-story li {
 	list-style: none;
 }
 
-.label a {
+.add-story a {
 	text-decoration: none;
 	padding: 10px 20px;
 	text-align: center;
@@ -47,20 +47,11 @@ header h1 {
 	font-size: 125%;
 }
 
-.label a:hover {
+.add-story a:hover {
 	color: red;
 }
 
 /* Search Story Fields */
-
-.label .as-label {
-	padding: 10px 20px;
-	text-align: center;
-	vertical-align: middle;
-	display: block;
-	background-color: #d6dcdc;
-	font-size: 125%;
-}
 
 .advanced-search {
 	text-align: center;
