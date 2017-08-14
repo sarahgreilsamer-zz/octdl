@@ -44,7 +44,7 @@ header h1 {
 	text-align: center;
 	vertical-align: middle;
 	display: block;
-	background-color: black;
+	background-color: #737373;
 	color: white;
 	font-size: 125%;
 }
@@ -113,14 +113,14 @@ table tbody tr td a {
 
 table tbody tr td a:hover {
 	text-decoration: none;
-	color: #ffff00;
+	color-background: #737373;
 }
 
 /* Footer */
 
 footer {
 	font-size: 85%;
-	color: #F2F4F4;
+	color: black;
 	padding-bottom: 20px;
 	padding-top: 20px;
 }
