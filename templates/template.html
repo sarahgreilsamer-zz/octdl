@@ -24,6 +24,12 @@
             </ul>
         </nav>
 
+        <nav class="as-title">
+            <ul>
+                <li>Advanced Search</li>
+            </ul>
+        </nav>
+
         <div class="advanced-search">
             <form action="/" method="get">
                 Title: <input type="text" name="title"><br>
@@ -33,31 +39,25 @@
             </form>
         </div>
 
-        <div class="all-stories-table">
-                    <table>
-                        <div class="table-header">
-                            <thead>
-                                <tr>
-                                    <th class="table-header">Title</th>
-                                    <th class="table-header">Origin</th>
-                                    <th class="table-header">Book</th>
-                                </tr>
-                            </thead>
-                        </div>
-                            
-                        <div class="table-content">
-                            <tbody>
-                                    {% for story in query_results %}
-                                    <tr>
-                                        <td class="title-link"><a target="_blank" href="{{ story[-1] }}">{{ story[0] }}</a></td>
-                                        <td class="origin">{{ story[1] }}</td>
-                                        <td class="book">{{ story[2] }}</td>
-                                    </tr>
-                                    {% endfor %}
-                            </tbody>
-                        </div>
-                    </table>
-        </div>
+         <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Origin</th>
+                    <th>Book</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for story in query_results %}
+                <tr>
+                    <td><a target="_blank" href="{{ story[-1] }}">{{ story[0] }}</a></td>
+                    <td>{{ story[1] }}</td>
+                    <td>{{ story[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
         <footer>
             <p>&copy; 2017 Occidental Children's Theater. Web Design by Sarah Greilsamer.</p>
