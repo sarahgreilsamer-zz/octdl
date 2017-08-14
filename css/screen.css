@@ -61,7 +61,7 @@ header h1 {
 }
 
 form {
-	background-color: #F2F4F4;
+	background-color: #d6dcdc;
 	padding: 30px 40px;
 }
 
@@ -73,6 +73,9 @@ input[type="text"] {
 	height: 40px;
 }
 
+form p {
+	font-size: 125%;
+}
 
 /* Table */
 
