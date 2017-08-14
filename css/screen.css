@@ -66,19 +66,21 @@ header h1 {
 
 }
 
-.all-stories-table .table-header {
+.all-stories-table table .table-header-all thead tr th .table-header {
 	background-color: #F2F4F4
 	font-weight: bold;
-	/*border: 0.5px solid #F2F4F4;*/
+	border-top: 0.5px solid #F2F4F4;
+	border-bottom: 0.5px solid #F2F4F4;
 }
 
-.all-stories-table .table-content {
-	/*border: 0.5px solid #F2F4F4;*/
+.all-stories-table table .table-content tbody tr td a {
+	text-decoration: none;
 	
 }
 
-.all-stories-table .table-content a {
-	text-decoration: none;
+.all-stories-table table .table-content tbody tr td {
+	border-top: 0.5px solid #F2F4F4;
+	border-bottom: 0.5px solid #F2F4F4;
 }
 
 /* Footer */
