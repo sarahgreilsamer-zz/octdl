@@ -69,7 +69,7 @@ input[type="text"] {
 	width: 100%;
 	display: block;
 	box-sizing: border-box;
-	padding: 0 5px;
+	/*padding: 0 5px;*/
 	height: 40px;
 }
 
