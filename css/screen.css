@@ -60,6 +60,11 @@ header h1 {
 	width: 15%;
 }
 
+form {
+	background-color: #F2F4F4;
+	padding: 30px 40px;
+}
+
 input[type="text"] {
 	width: 100%;
 	display: block;
@@ -68,13 +73,6 @@ input[type="text"] {
 	height: 40px;
 }
 
-input[type="submit"] {
-	width: 100%;
-	display: block;
-	box-sizing: border-box;
-	padding: 0 10px;
-	height: 40px;
-}
 
 /* Table */
 
