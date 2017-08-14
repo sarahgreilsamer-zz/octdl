@@ -37,7 +37,7 @@ FILE_NAME1 = "Stories Library"
 FILE_NAME2 = "Added Stories"
 
 
-# data has to be on sheet 1, if not change sheet number
+# This function grabs data from Google Sheets using the Sheets API
 def get_data(file_name1, file_name2):
     # Use creds to create a client to interact with the Google Drive API
     scope = ['https://spreadsheets.google.com/feeds']
@@ -63,33 +63,6 @@ def get_data(file_name1, file_name2):
     # Sort by alphabetical order of title
     stories.sort(key=lambda story: story[0])
     return stories  # list of lists
-
-
-def get_options(stories_list):  # use list of lists from get_data
-    all_stories = []
-    stories_title = []
-    stories_book = []
-    stories_origin = []
-    stories_link2pdf = []
-    # gathering all possible values for title, book, origin, and link
-    for each_story in stories_list:
-        stories_title.append(each_story[0])
-        stories_book.append(each_story[1])
-        stories_origin.append(each_story[2])
-        stories_link2pdf.append(each_story[3])
-    # removing duplicates
-    stories_title = list(set(stories_title))
-    stories_book = list(set(stories_book))
-    stories_origin = list(set(stories_origin))
-    stories_link2pdf = list(set(stories_link2pdf))
-    # gather all characteristics into a list of lists
-    all_stories.append(stories_title)
-    all_stories.append(stories_book)
-    all_stories.append(stories_origin)
-    all_stories.append(stories_link2pdf)
-    return all_stories  # return list of stories characteristics
-
-#FIXME
 
 
 def get_userinput(parameters):  # parameters is the result of args to dict
@@ -150,7 +123,6 @@ def get_results(stories_list, user_inputlist):
 @app.route('/')
 def view_page():
     stories = get_data(FILE_NAME1, FILE_NAME2)  # list of lists [[story 1],[story 2],...]
-    #stories_list = get_options(stories)  # all options, list of lists [[all titles],[all books],...]
     parameters = request.args.to_dict()  # args to dict, dictionary where keys name of field, and user input are values of keys
     if len(parameters) == 0:
         parameters['title'] = ''

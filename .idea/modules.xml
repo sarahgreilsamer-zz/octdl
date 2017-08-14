@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/octdl.iml" filepath="$PROJECT_DIR$/.idea/octdl.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../subitize-master/.idea/subitize-master.iml" filepath="$PROJECT_DIR$/../subitize-master/.idea/subitize-master.iml" />
     </modules>
   </component>
 </project>
