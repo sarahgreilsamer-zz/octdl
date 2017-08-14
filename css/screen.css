@@ -1,4 +1,4 @@
-/* red color #E74C3C, grey color #F2F4F4 */
+/* orange color #ff751a*/
 
 /* Styling the entire page */
 
@@ -113,7 +113,14 @@ table tbody tr td a {
 
 table tbody tr td a:hover {
 	text-decoration: none;
-	color-background: #ff751a;
+}
+
+table tbody tr:nth-child(even) td:hover {
+	background-color: #ff751a;
+}
+
+table tbody tr:nth-child(odd) td:hover {
+	background-color: #ff751a;
 }
 
 /* Footer */
