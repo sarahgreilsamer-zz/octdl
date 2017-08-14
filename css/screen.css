@@ -57,12 +57,12 @@ header h1 {
 	text-align: center;
 	margin-bottom: 20px;
 	font-weight: 125%;
-	width: 15%;
+	width: 100%;
 }
 
 form {
 	background-color: #d6dcdc;
-	padding: 30px 40px;
+	padding: 20px 20px;
 	text-align: center;
 	width: 100%;
 }
