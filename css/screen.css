@@ -35,13 +35,6 @@ header h1 {
 
 .label li {
 	list-style: none;
-	text-decoration: none;
-	padding: 10px 20px;
-	text-align: center;
-	vertical-align: middle;
-	display: block;
-	background-color: #d6dcdc;
-	font-size: 125%;
 }
 
 .label a {
@@ -59,6 +52,15 @@ header h1 {
 }
 
 /* Search Story Fields */
+
+.label .as-label {
+	padding: 10px 20px;
+	text-align: center;
+	vertical-align: middle;
+	display: block;
+	background-color: #d6dcdc;
+	font-size: 125%;
+}
 
 .advanced-search {
 	text-align: center;
