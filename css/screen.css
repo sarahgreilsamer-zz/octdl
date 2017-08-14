@@ -57,6 +57,7 @@ header h1 {
 
 .advanced-search {
 	text-align: center;
+	margin-bottom: 20px; 
 }
 
 /* Table */
@@ -65,18 +66,18 @@ header h1 {
 
 }
 
-.table-header {
+.all-stories-table .table-header {
 	background-color: #F2F4F4
 	font-weight: bold;
-	border: 0.5px solid #F2F4F4;
+	/*border: 0.5px solid #F2F4F4;*/
 }
 
-.table-content {
-	border: 0.5px solid #F2F4F4;
+.all-stories-table .table-content {
+	/*border: 0.5px solid #F2F4F4;*/
 	
 }
 
-.table-content a {
+.all-stories-table .table-content a {
 	text-decoration: none;
 }
 
