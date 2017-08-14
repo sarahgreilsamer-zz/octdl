@@ -49,6 +49,10 @@ header h1 {
 	background-color: #F2F4F4;
 }
 
+.add-story a:hover {
+	background-color: #d6dcdc;
+}
+
 /* Search Story Fields */
 
 .advanced-search {
