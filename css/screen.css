@@ -4,6 +4,7 @@
 
 html {
 	font-family: 'Open Sans', sans-serif;
+	background-color: #ffff00;
 }
 
 .container {
@@ -78,7 +79,6 @@ input[type="text"] {
 form p {
 	font-size: 125%;
 	color: black;
-	background-color: white;
 }
 
 /* Table */
