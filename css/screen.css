@@ -55,7 +55,7 @@ header h1 {
 
 .advanced-search {
 	text-align: center;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	font-weight: 125%;
 	width: 100%;
 	box-sizing: border-box;
@@ -63,7 +63,6 @@ header h1 {
 
 form {
 	background-color: #d6dcdc;
-	padding: 10px 10px;
 	text-align: center;
 	width: 100%;
 }
@@ -71,8 +70,6 @@ form {
 input[type="text"] {
 	display: block;
 	box-sizing: border-box;
-	padding: 0px 10px;
-	height: 30px;
 	width: 100%;
 }
 
