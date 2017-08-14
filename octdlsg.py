@@ -8,33 +8,18 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 
-# STANDARD FLASK IMPORT
+# FLASK IMPORT
 
 from os import chdir
 from os.path import dirname, realpath, expanduser
-
-from flask import Flask, render_template, send_from_directory
-
-# JUSTIN'S SUBITIZE IMPORTS
-
 from flask import Flask, render_template, request, send_from_directory
-
-# FOLLOWING CODE TO USE GOOGLE API
-
-import httplib2
-import os
-
-from apiclient import discovery
-from oauth2client import client
-from oauth2client import tools
-from oauth2client.file import Storage
 
 
 app = Flask(__name__)
 
 
-FILE_NAME1 = "Stories Library"
-FILE_NAME2 = "Added Stories"
+FILE_NAME1 = "Stories Library"  # Workbook where story data was checked by Adam and Tristan
+FILE_NAME2 = "Added Stories"  # Workbook where story data added by members of OCT through Google form
 
 
 # This function grabs data from Google Sheets using the Sheets API
@@ -65,6 +50,7 @@ def get_data(file_name1, file_name2):
     return stories  # list of lists
 
 
+# This function converts user input into lists
 def get_userinput(parameters):  # parameters is the result of args to dict
     user_inputlist = []
     user_inputlist.append(parameters['title'])
@@ -73,6 +59,7 @@ def get_userinput(parameters):  # parameters is the result of args to dict
     return user_inputlist
 
 
+# This function gets results given user input and the existing library (Stories Library + Added Stories)
 def get_results(stories_list, user_inputlist):
     query_result = []
     title_keywords = []
@@ -120,6 +107,7 @@ def get_results(stories_list, user_inputlist):
     return query_result  # should be a list of lists where list is a story that fits the criteria
 
 
+# Creates website page
 @app.route('/')
 def view_page():
     stories = get_data(FILE_NAME1, FILE_NAME2)  # list of lists [[story 1],[story 2],...]
@@ -135,6 +123,7 @@ def view_page():
     return render_template('template.html', dictionary=str(parameters), query_results=query_results)
 
 
+# Not currently used but to be used in future developments
 class Story:
     def __init__(self, title, origin, book, link2pdf):
         self.title = title
