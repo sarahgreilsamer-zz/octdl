@@ -44,13 +44,13 @@ header h1 {
 	text-align: center;
 	vertical-align: middle;
 	display: block;
-	background-color: #737373;
+	background-color: black;
 	color: white;
 	font-size: 125%;
 }
 
 .add-story a:hover {
-	color: #ffff00;
+	background-color: #ff751a;
 }
 
 /* Search Story Fields */
@@ -113,7 +113,7 @@ table tbody tr td a {
 
 table tbody tr td a:hover {
 	text-decoration: none;
-	color-background: #737373;
+	color-background: #ff751a;
 }
 
 /* Footer */
