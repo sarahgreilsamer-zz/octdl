@@ -61,7 +61,8 @@ header h1 {
 }
 
 form {
-	background-color: #d6dcdc;
+	/*background-color: #d6dcdc;*/
+	background-image: url(../images/dracula3.png);
 	padding: 30px 40px;
 }
 
@@ -69,7 +70,6 @@ input[type="text"] {
 	width: 100%;
 	display: block;
 	box-sizing: border-box;
-	/*padding: 0 5px;*/
 	height: 40px;
 }
 
